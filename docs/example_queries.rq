@@ -1,0 +1,25 @@
+PREFIX kg: <https://example.org/research-kg/ontology/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Recent works and topics
+SELECT ?work ?title ?year ?topic
+WHERE {
+  ?work a kg:Work ;
+        rdfs:label ?title .
+  OPTIONAL { ?work kg:publicationYear ?year . }
+  OPTIONAL { ?work kg:hasTopic/rdfs:label ?topic . }
+}
+ORDER BY DESC(?year)
+LIMIT 25
+
+# Author collaboration network
+SELECT DISTINCT ?authorName ?coauthorName ?title
+WHERE {
+  ?work kg:authoredBy ?author ;
+        kg:authoredBy ?coauthor ;
+        rdfs:label ?title .
+  ?author rdfs:label ?authorName .
+  ?coauthor rdfs:label ?coauthorName .
+  FILTER (?author != ?coauthor)
+}
+LIMIT 50

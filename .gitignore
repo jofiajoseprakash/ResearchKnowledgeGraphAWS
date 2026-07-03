@@ -1,0 +1,26 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Local assistant/tool settings
+.claude/
+
+# Rendered architecture diagrams
+research_kg_aws.png
+research_kg_aws.svg
+
+# AWS CDK output
+cdk.out/
+cdk.context.json
+
+# Local data and test artifacts
+.pytest_cache/
+*.ttl
+*.jsonl

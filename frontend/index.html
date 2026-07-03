@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Research Knowledge Graph Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Research Knowledge Graph</p>
+        <h1>Explore papers, authors, topics, institutions, and citations.</h1>
+      </div>
+      <div class="status" id="status">Not connected</div>
+    </header>
+
+    <main class="layout">
+      <section class="panel controls">
+        <label>
+          API URL
+          <input
+            id="apiUrl"
+            type="url"
+            placeholder="https://your-api-id.execute-api.us-east-1.amazonaws.com"
+            autocomplete="off"
+          />
+        </label>
+
+        <div id="authPanel">
+          <label>
+            Email
+            <input id="authEmail" type="email" autocomplete="username" />
+          </label>
+          <label>
+            Password
+            <input id="authPassword" type="password" autocomplete="current-password" />
+          </label>
+          <button id="signInButton" type="button">Sign in</button>
+          <p id="authError" class="auth-error hidden"></p>
+        </div>
+
+        <label>
+          Ask in plain English
+          <textarea
+            id="question"
+            rows="3"
+            placeholder="Show the citation graph"
+          >Show the citation graph</textarea>
+        </label>
+
+        <div class="query-buttons">
+          <button id="askButton" type="button">Run Query</button>
+          <button id="askAiButton" type="button">✦ Ask AI</button>
+        </div>
+
+        <div class="examples">
+          <p>Try:</p>
+          <button type="button" data-question="Show the citation graph">Citation graph</button>
+          <button type="button" data-question="Show papers by topic">Papers by topic</button>
+          <button type="button" data-question="Show the co-author network">Co-author network</button>
+          <button type="button" data-question="Show authors and institutions">Institutions</button>
+          <button type="button" data-question="Who are the most prolific authors?">Top authors</button>
+          <button type="button" data-question="Which institutions are most active?">Top institutions</button>
+          <button type="button" data-question="What are the most cited papers?">Most cited</button>
+          <button type="button" data-question="What are the top topics?">Top topics</button>
+          <button type="button" data-question="Show recent papers">Recent papers</button>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <section class="panel intent-panel">
+          <div>
+            <p class="label">Matched Intent</p>
+            <h2 id="intentTitle">Citation graph</h2>
+          </div>
+          <p id="intentDescription">
+            Shows paper-to-paper citation relationships using readable paper titles.
+          </p>
+        </section>
+
+        <section class="panel graph-panel">
+          <div class="panel-header">
+            <h2>Graph</h2>
+            <div class="graph-actions">
+              <p id="graphSummary">Run a query to visualize results.</p>
+              <button id="resetGraph" type="button">Reset View</button>
+            </div>
+          </div>
+          <div class="legend">
+            <span><i class="recent"></i>Recent paper</span>
+            <span><i class="foundational"></i>Foundational work</span>
+            <span><i class="author"></i>Author</span>
+            <span><i class="topic"></i>Topic</span>
+            <span><i class="institution"></i>Institution</span>
+          </div>
+          <svg id="graph" role="img" aria-label="Knowledge graph visualization"></svg>
+          <aside id="nodeDetails" class="node-details hidden"></aside>
+        </section>
+
+        <section class="panel table-panel">
+          <div class="panel-header">
+            <h2>Results</h2>
+            <div class="sparql-header-right">
+              <span id="aiLabel" class="ai-label hidden">✦ AI generated</span>
+              <button id="toggleSparql" type="button">Show SPARQL</button>
+            </div>
+          </div>
+          <pre id="sparql" class="sparql hidden"></pre>
+          <div id="table"></div>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

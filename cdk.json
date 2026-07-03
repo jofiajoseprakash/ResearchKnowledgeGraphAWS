@@ -1,0 +1,8 @@
+{
+  "app": "uv run python -m researchknowledgegraphaws.infra.app",
+  "context": {
+    "projectName": "research-kg",
+    "defaultRegion": "us-east-1",
+    "defaultIngestLimit": 500
+  }
+}
