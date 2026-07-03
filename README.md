@@ -28,12 +28,6 @@ Generate them with:
 uv run python diagrams/architecture_diagram.py
 ```
 
-## Terraform or CDK?
-
-This project uses **AWS CDK** as the infrastructure-as-code tool. Terraform is not required for v1 because CDK creates the VPC, S3 buckets, DynamoDB table, Neptune cluster, Lambda functions, Step Functions workflow, API Gateway, Cognito, and CloudWatch alarm.
-
-Use one infrastructure owner per resource. Adding Terraform now would duplicate the CDK stack and make deployments harder to reason about.
-
 ## Project Layout
 
 ```text

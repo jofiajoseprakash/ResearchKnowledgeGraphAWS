@@ -19,10 +19,6 @@ NATURAL LANGUAGE QUERY PATH
                                            -> SPARQL Lambda (VPC) -> Neptune :8182
 ```
 
-## Infrastructure Choice
-
-This project uses AWS CDK, not Terraform. CDK is the single source of truth for infrastructure in v1. Terraform is not required unless the project later needs to integrate with an existing Terraform-managed platform.
-
 ## Network Shape
 
 - Neptune runs in private isolated subnets with no internet gateway.
