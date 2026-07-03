@@ -4,6 +4,8 @@ AWS-native knowledge graph project for scholarly metadata from OpenAlex.
 
 The project ingests research papers, authors, institutions, journals, topics, and citations from OpenAlex, converts them into RDF/Turtle, bulk loads them into Amazon Neptune Serverless, and exposes graph query APIs through API Gateway and Lambda.
 
+![Interactive research knowledge graph demo](diagrams/frontend-ui.png)
+
 ## Architecture
 
 ```text
